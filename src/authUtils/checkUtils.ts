@@ -1,4 +1,4 @@
-import findbyId from "@/services/apikey.service";
+import findbyId from "../services/apikey.service";
 import { Request, Response, NextFunction } from 'express';
 const HEADER = {
     API_KEY :"x-api-key",

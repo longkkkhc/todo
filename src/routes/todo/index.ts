@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { TodoController } from '../../controller/todo.controller';
-import { asyncHandler } from '@/helper/asyncHandler';
-import { authorization } from '@/authUtils/authUtils';
+import { asyncHandler } from '../../helper/asyncHandler';
+import { authorization } from '../../authUtils/authUtils';
 
 const router = Router();
 const todoController = new TodoController();

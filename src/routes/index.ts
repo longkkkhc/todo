@@ -1,5 +1,5 @@
  import { Router } from "express";
-    import { apikeyCheck, permissions } from "@/authUtils/checkUtils";
+    import { apikeyCheck, permissions } from "../authUtils/checkUtils";
     import userRouter from './user'; // <-- Thay đổi này
     import todoRouter from './todo'; // <-- Thay đổi này
     const router = Router();

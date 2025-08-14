@@ -1,6 +1,6 @@
 'use strict'
 import { model, Schema, Document } from 'mongoose';
-import { Todo } from '@/interfaces/todo.interfaces';
+import { Todo } from '../interfaces/todo.interfaces';
  
 const TodoSchema  : Schema = new Schema({
   userId:{

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { TodoService } from '@services/todo.service';
+import { TodoService } from '../services/todo.service';
 import { HttpException } from '@core/httpException';
 
 export class TodoController {

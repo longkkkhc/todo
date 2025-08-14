@@ -1,6 +1,6 @@
-import { HttpException } from '@/core/httpException';
-import {Todo} from '@interfaces/todo.interfaces';
-import { TodoModel } from '@models/todolist.models';
+import { HttpException } from '../core/httpException';
+import {Todo} from '../interfaces/todo.interfaces';
+import { TodoModel } from '../models/todolist.models';
 import {Types} from 'mongoose';
 export class TodoService {
     public async findAllTodos(userId:string): Promise<Todo[]> {

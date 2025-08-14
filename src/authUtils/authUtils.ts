@@ -1,9 +1,9 @@
 
 import {sign, verify} from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { asyncHandler } from '@/helper/asyncHandler';
-import { HttpException } from '@/core/httpException';
-import keyTokenService from '@services/keyToken.service'
+import { asyncHandler } from '../helper/asyncHandler';
+import { HttpException } from '../core/httpException';
+import keyTokenService from '../services/keyToken.service'
 import { access } from 'fs';
 const HEADER = {
     API_KEY :"x-api-key",

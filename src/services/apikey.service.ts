@@ -1,4 +1,4 @@
-import { apikeyModel } from "@/models/apikey.models";
+import { apikeyModel } from "../models/apikey.models";
 import { randomBytes } from "crypto";
 
 const findbyId = async (key?: string) => {

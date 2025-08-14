@@ -1,5 +1,5 @@
 import{Schema, model, Document} from 'mongoose'
-import { KeyToken } from '@/interfaces/keyToken.interfaces'
+import { KeyToken } from '../interfaces/keyToken.interfaces'
 const keyTokenSchema = new Schema({
     userId:{
         type: Schema.Types.ObjectId,

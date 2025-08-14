@@ -1,13 +1,13 @@
 import { hash } from 'bcrypt';
 import { compare } from 'bcrypt';
 import { Service } from 'typedi';
-import { createKeypair } from '@authUtils/authUtils';
+import { createKeypair } from '../authUtils/authUtils';
 import{randomBytes} from 'crypto';
-import { HttpException } from '@core/httpException';
-import { User } from '@interfaces/user.interfaces';
-import { UserModel } from '@models/user.models';
-import {findByEmail,removeKeyById} from '@services/auth.service';
-import keyTokenService from '@services/keyToken.service';
+import { HttpException } from '../core/httpException';
+import { User } from '../interfaces/user.interfaces';
+import { UserModel } from '../models/user.models';
+import {findByEmail,removeKeyById} from '../services/auth.service';
+import keyTokenService from '../services/keyToken.service';
 
 @Service()
 export class UserService {

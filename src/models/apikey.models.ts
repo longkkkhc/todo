@@ -1,5 +1,5 @@
 import {Schema,model,Document} from 'mongoose'
-import {ApiKey} from '@interfaces/apikey.interfaces'
+import {ApiKey} from '../interfaces/apikey.interfaces'
 const ApiKeySchema : Schema = new Schema({
     key :{
         type : String,

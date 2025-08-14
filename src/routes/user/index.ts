@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { UserController } from '../../controller/user.controller';
-import { asyncHandler } from '@/helper/asyncHandler';
-import { authorization } from '@/authUtils/authUtils';
+import { asyncHandler } from '../../helper/asyncHandler';
+import { authorization } from '../../authUtils/authUtils';
 const router = Router();
 
 // POST /signup
