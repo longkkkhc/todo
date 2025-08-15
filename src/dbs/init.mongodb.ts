@@ -31,5 +31,5 @@ class Database{
         return Database.instance;
     }
 }
-const intanceMongo = Database.getIntance()
-export default intanceMongo
+const instanceMongo = Database.getIntance()
+export default instanceMongo

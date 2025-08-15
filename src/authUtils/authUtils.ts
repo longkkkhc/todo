@@ -4,6 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 import { asyncHandler } from '../helper/asyncHandler';
 import { AuthFailureError,BadRequestError,NotFoundError } from '../constants/error.constants';
 import keyTokenService from '../services/keyToken.service'
+import { RequestWithUser } from '../interfaces/request.interfaces';
 import { access } from 'fs';
 const HEADER = {
     API_KEY :"x-api-key",
@@ -28,32 +29,27 @@ const createKeypair = async (payload : Object,publickey : string,privateKey : st
 }
 
 
-const authorization = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.headers[HEADER.CLIENT_ID]
-    if (!userId) {
-        throw new AuthFailureError('Forbidden Error');
-    }
-    const todo = await keyTokenService.findByUserId(userId)
-    if (!todo) {
-        throw new AuthFailureError('Forbidden Error');
-    }
-    const accessToken = req.headers[HEADER.AUTHORIZATION]
-    if (!accessToken) {
-    throw new AuthFailureError('Forbidden Error');
-  }
-
+const authorization = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   try {
-    const decodeUser = verify(accessToken, todo.publicKey);
-    if (userId !== decodeUser.userId) {
-      throw new AuthFailureError('Forbidden Error');
+    const userId = req.headers[HEADER.CLIENT_ID] as string;
+    if (!userId) {
+      return res.status(403).json({ message: "Forbidden Error: Missing client ID" });
     }
-    req.todo = todo;
-    req.user = decodeUser;
-    return next();
-  } catch (err) {
-    console.error("JWT verification error:", err);
-    throw new AuthFailureError('Forbidden Error');
+
+    const keyToken = await keyTokenService.findByUserId(userId);
+    if (!keyToken) {
+      return res.status(403).json({ message: "Forbidden Error: Key token not found" });
+    }
+
+    req.todo = keyToken; 
+    req.user = { userId } as any; 
+
+    next();
+  } catch (error) {
+    console.error("Authorization error:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-})
+};
+
 
 export  {createKeypair,authorization}

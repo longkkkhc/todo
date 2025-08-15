@@ -1,6 +1,5 @@
 import { hash } from 'bcrypt';
 import { compare } from 'bcrypt';
-import { Service } from 'typedi';
 import { createKeypair } from '../authUtils/authUtils';
 import{randomBytes} from 'crypto';
 import { BadRequestError,AuthFailureError } from '../constants/error.constants';
@@ -9,7 +8,6 @@ import { UserModel } from '../models/user.models';
 import {findByEmail,removeKeyById} from '../services/auth.service';
 import keyTokenService from '../services/keyToken.service';
 
-@Service()
 export class UserService {
   static async signup (email:String, password:string): Promise<{ user: User; tokens: any }> {
     const existingUser = await UserModel.findOne({email}).lean();

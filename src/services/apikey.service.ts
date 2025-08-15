@@ -1,7 +1,7 @@
 import { apikeyModel } from "../models/apikey.models";
 import { randomBytes } from "crypto";
 
-const findbyId = async (key?: string) => {
+const findbyId = async (key: string) => {
     if (!key) {
         const newKeyValue = randomBytes(64).toString('hex');
         const newKeyDoc = await apikeyModel.create({

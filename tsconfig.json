@@ -37,6 +37,6 @@
       "@authUtils/*": ["authUtils/*"],
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.json", ".env"],
+  "include": ["src/**/*.d.ts","src","src/**/*.ts", "src/**/*.json", ".env"],
   "exclude": ["node_modules", "src/http", "src/logs"]
 }

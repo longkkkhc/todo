@@ -1,15 +1,14 @@
-import { ApiKey } from "./apikey.interfaces"
-import { JwtPayload } from "jsonwebtoken";
+import { Request } from "express";
+import { ApiKey } from "./apikey.interfaces";
 import { KeyToken } from "./keyToken.interfaces";
+import { JwtPayload } from "jsonwebtoken";
+
 export interface JwtUserPayload extends JwtPayload {
   userId: string;
 }
-declare global {
-  namespace Express {
-    export interface Request {
-      user?: JwtUserPayload | KeyToken;
-      todo?: KeyToken;
-      objKey?: ApiKey;
-    }
-  }
+
+export interface RequestWithUser extends Request {
+  user?: JwtUserPayload | KeyToken;
+  todo?: KeyToken;
+  objKey?: ApiKey;
 }
