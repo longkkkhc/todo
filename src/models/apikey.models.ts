@@ -12,7 +12,13 @@ const ApiKeySchema : Schema = new Schema({
     permissions :{
         type : [String],
         required : true,
-        enum : ['0000','1111','2222']
+        enum : ['TODO_READ',     
+        'TODO_CREATE',   
+        'TODO_UPDATE',   
+        'TODO_DELETE',  
+        'USER_MANAGE',   
+        'ADMIN' 
+        ]
     }
 })
 export const apikeyModel = model<ApiKey & Document>('ApiKey', ApiKeySchema);

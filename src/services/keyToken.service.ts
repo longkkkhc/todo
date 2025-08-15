@@ -1,6 +1,8 @@
 import {keyTokenModel} from "../models/keyToken.models";
 import{Types} from "mongoose"
 class keyTokenService{
+
+    
     static createKeytoken = async({userId,privateKey,publicKey,refreshToken}) => {
         try {
              if (!Types.ObjectId.isValid(userId)) {
@@ -16,6 +18,8 @@ class keyTokenService{
             return null;
         }
     }
+
+
     static findByUserId =  async (userId ) =>{
         return await keyTokenModel.findOne({ user:(userId) });
     }

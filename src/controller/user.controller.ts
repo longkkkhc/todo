@@ -3,7 +3,7 @@ import { UserService } from '../services/user.service';
 import { HttpException } from '@core/httpException';
 
 export class UserController {
-  // Đăng ký
+
   static async signup(req: Request, res: Response, next: NextFunction) {
     try {
       const { email, password } = req.body;
@@ -17,7 +17,7 @@ export class UserController {
     }
   }
 
-  // Đăng nhập
+
   static async login(req: Request, res: Response, next: NextFunction) {
     try {
       const { email, password } = req.body;
@@ -31,7 +31,7 @@ export class UserController {
     }
   }
 
-  // Đăng xuất
+
   static async logout(req: Request, res: Response, next: NextFunction) {
     try {
       const { userId } = req.body; // hoặc req.user nếu bạn có middleware auth

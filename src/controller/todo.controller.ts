@@ -5,10 +5,9 @@ import { HttpException } from '@core/httpException';
 export class TodoController {
   private todoService = new TodoService();
 
-  // Lấy tất cả Todo của 1 user
   public findAllTodos = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { userId } = req.params; // hoặc req.user.userId nếu có middleware auth
+      const { userId } = req.params; 
       const todos = await this.todoService.findAllTodos(userId);
       res.status(200).json(todos);
     } catch (error) {
@@ -16,7 +15,7 @@ export class TodoController {
     }
   };
 
-  // Lấy 1 Todo theo ID
+
   public findTodoById = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { todoId } = req.params;
@@ -27,7 +26,7 @@ export class TodoController {
     }
   };
 
-  // Tạo Todo mới
+
   public createTodo = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { userId, title, completed } = req.body;
@@ -38,7 +37,7 @@ export class TodoController {
     }
   };
 
-  // Cập nhật Todo
+
   public updateTodo = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { todoId } = req.params;
@@ -50,7 +49,7 @@ export class TodoController {
     }
   };
 
-  // Xóa Todo
+
   public deleteTodo = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { todoId } = req.params;

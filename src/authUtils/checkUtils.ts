@@ -11,7 +11,6 @@ const apikeyCheck = async(req: Request, res: Response, next: NextFunction) => {
         if (!key) {
             return res.status(403).json({ message: 'Forbidden Error' });
         }
-        // check objKey
         const keyString = key.toString()
         const objKey = await findbyId(keyString)
         if( !objKey)
@@ -20,12 +19,13 @@ const apikeyCheck = async(req: Request, res: Response, next: NextFunction) => {
                 message :'Forbidden Error'
             })
         }
-        (req as any).objKey = objKey;
+        req.objKey = objKey;
         return next();
     } catch (error) {
         
     }
 }
+
 const permissions = (permissions) =>{
 
     console.log("==============================================")

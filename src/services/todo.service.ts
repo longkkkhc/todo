@@ -1,4 +1,4 @@
-import { HttpException } from '../core/httpException';
+import { BadRequestError,NotFoundError } from '../constants/error.constants';
 import {Todo} from '../interfaces/todo.interfaces';
 import { TodoModel } from '../models/todolist.models';
 import {Types} from 'mongoose';
@@ -32,7 +32,7 @@ export class TodoService {
             new: true
         })
         if (!updateTodoById) {
-            throw new HttpException(409, "Todo doesn't exist or you don't have permission to update this todo");
+            throw new BadRequestError("Todo doesn't exist or you don't have permission to update this todo");
         }
         return updateTodoById;
     }
@@ -41,7 +41,7 @@ export class TodoService {
             _id: todoId,
             userId: new Types.ObjectId(userId)
         });
-        if (!deleteTodoById) throw new HttpException(409, "Todo doesn't exist or you don't have permission to delete this todo");
+        if (!deleteTodoById) throw new BadRequestError("Todo doesn't exist or you don't have permission to delete this todo");
 
         return deleteTodoById;
     }
